@@ -12,5 +12,5 @@ package swagger
 // Quantity of shares for which shareholding details are not reported as the quantity of shares owned by the shareholder is under the threshold limit.
 type AllOfSafeKeepingAccountAndHoldingsAccountSubLevelBelowThresholdShareholdingQuantity struct {
 	// Quantity expressed as a number, for example, a number of shares.
-	Unit string `json:"unit"`
+	Unit int `json:"unit"`
 }

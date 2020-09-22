@@ -42,7 +42,7 @@ func DisclosureIdentificationHandler(w http.ResponseWriter, r *http.Request) {
 		log.Println(err.Error())
 		return
 	}
-	accounts := templateSchema.DisclosureInformation.SafeKeepingAccountAndHoldings.SafeKeepingAccountAndHoldings
+	accounts := templateSchema.DisclosureInformation
 	result, _ := json.Marshal(accounts)
 	log.Println(string(result))
 	w.WriteHeader(http.StatusOK)

@@ -12,5 +12,5 @@ package swagger
 // Total number of shares held by the responding intermediary.
 type AllOfSafeKeepingAccountAndHoldingsSafeKeepingAccountAndHoldingsTotalShareholdingBalance struct {
 	// Quantity expressed as a number, for example, a number of shares.
-	Unit string `json:"unit"`
+	Unit int `json:"unit"`
 }

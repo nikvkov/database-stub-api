@@ -12,5 +12,5 @@ package swagger
 // Quantity of shares for which shareholding details are not disclosed.
 type AllOfSafeKeepingAccountAndHoldingsAccountSubLevelNonDisclosedShareholdingBalanceQuantity struct {
 	// Quantity expressed as a number, for example, a number of shares.
-	Unit string `json:"unit"`
+	Unit int `json:"unit"`
 }
