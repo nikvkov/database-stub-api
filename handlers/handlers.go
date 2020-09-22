@@ -12,6 +12,8 @@ import (
 	"github.com/nikvkov/database-stub-api/swagger"
 )
 
+const jsonDisclosureInfo = `{"safekeepingAccountAndHolding":[{"accountServicer":{"anyBIC":"DIRUNGG1242"},"shareholdingBalanceOnOwnAccount":{"unit":1.0},"shareholdingBalanceOnClientAccount":{"unit":1.0},"totalShareholdingBalance":{"unit":1.0},"accountSubLevel":{"belowThresholdShareholdingQuantity":{"unit":1.0},"disclosure":[{"safekeepingAccount":"21216635","accountHolder":{},"shareholdingBalance":[{"shareholdingType":"BENE","quantity":{"unit":1.0}}]},{"safekeepingAccount":"16279221","accountHolder":{},"shareholdingBalance":[{"shareholdingType":"BENE","quantity":{"unit":1.0}}]},{"safekeepingAccount":"75080116","accountHolder":{},"shareholdingBalance":[{"shareholdingType":"BENE","quantity":{"unit":1.0}}]},{"safekeepingAccount":"07912963","accountHolder":{"legalPerson":{"nameAndAddress":{"name":"Elda","address":{"addressType":"ADDR","addressLine":["2467 Reilly Stream","85984 Vandervort Estates"],"streetName":"Giovanny Camp","buildingNumber":"HNO:127","postBox":"P.O. Box 60","postCode":"12375","townName":"Port Howellshire","countrySubDivision":"Bedfordshire","country":{}}},"emailAddress":{},"identification":{"anyBIC":"NLATEVARXXX"},"countryOfIncorporation":{},"activityIndicator":"I4756","investorType":{},"ownership":{"ownershipType":{"code":"USUF"}}}},"shareholdingBalance":[{"shareholdingType":"NOMI","forwardRequestDetails":{},"quantity":{"unit":1.0}}]},{"safekeepingAccount":"45327269","accountHolder":{"legalPerson":{"nameAndAddress":{"name":"Willard","address":{"addressType":"ADDR","addressLine":["77272 Vladimir Inlet","712 Kuhn Skyway"],"streetName":"Thompson Drives","buildingNumber":"HNO:127","postBox":"P.O. Box 60","postCode":"12375","townName":"East Ali","countrySubDivision":"Buckinghamshire","country":{}}},"emailAddress":{},"identification":{"anyBIC":"FIDTNGLAXXX"},"countryOfIncorporation":{},"activityIndicator":"R7196","investorType":{},"ownership":{"ownershipType":{"code":"USUF"}}}},"shareholdingBalance":[{"shareholdingType":"NOMI","forwardRequestDetails":{},"quantity":{"unit":1.0}}]},{"safekeepingAccount":"08752411","accountHolder":{"legalPerson":{"nameAndAddress":{"name":"Pink","address":{"addressType":"ADDR","addressLine":["411 Monserrat River","564 Marie Run"],"streetName":"Cormier Isle","buildingNumber":"HNO:127","postBox":"P.O. Box 60","postCode":"12375","townName":"West Ceceliachester","countrySubDivision":"Berkshire","country":{}}},"emailAddress":{},"identification":{"anyBIC":"SLAMCHZZXXX"},"countryOfIncorporation":{},"activityIndicator":"U0765","investorType":{},"ownership":{"ownershipType":{"code":"USUF"}}}},"shareholdingBalance":[{"shareholdingType":"NOMI","forwardRequestDetails":{},"quantity":{"unit":1.0}}]},{"safekeepingAccount":"42849829","accountHolder":{"legalPerson":{"nameAndAddress":{"name":"Ines","address":{"addressType":"ADDR","addressLine":["516 Ziemann Trail","1126 Dibbert Valleys"],"streetName":"Michel Island","buildingNumber":"HNO:127","postBox":"P.O. Box 60","postCode":"12375","townName":"Kodyton","countrySubDivision":"Bedfordshire","country":{}}},"emailAddress":{},"identification":{"anyBIC":"SLZMAMNZXXX"},"countryOfIncorporation":{},"activityIndicator":"I0274","investorType":{},"ownership":{"ownershipType":{"code":"USUF"}}}},"shareholdingBalance":[{"shareholdingType":"NOMI","forwardRequestDetails":{},"quantity":{"unit":1.0}}]}]}}]}`
+
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	_, err := fmt.Fprint(w, "Database stub api")
@@ -37,13 +39,13 @@ func SupplementaryDataHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func DisclosureIdentificationHandler(w http.ResponseWriter, r *http.Request) {
-	templateSchema, err := getSchema(w, r)
+	_, err := getSchema(w, r)
 	if err != nil {
 		log.Println(err.Error())
 		return
 	}
-	accounts := templateSchema.DisclosureInformation
-	result, _ := json.Marshal(accounts)
+	//accounts := templateSchema.DisclosureInformation
+	result := []byte(jsonDisclosureInfo) //json.Marshal(accounts)
 	log.Println(string(result))
 	w.WriteHeader(http.StatusOK)
 	w.Write(result)
